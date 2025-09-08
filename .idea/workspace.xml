@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="850f49c9-5921-4fdd-b7ad-818a21ea975b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DL_HW2_helpful_resources/Preprocessing-for-deep-learning.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/._environment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/._part1-convnet" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/._part2-pytorch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/._report-template-a2.pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/._.DS_Store" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/._.ipynb_checkpoints" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/._CS7643-Assignment2-1.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/._cs7643" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/._data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/._modules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/._optimizer" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/._tests" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/.ipynb_checkpoints/._CS7643-Assignment2-1-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/cs7643/.___init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/cs7643/._cifar10.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/cs7643/._env_prob.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/cs7643/._mnist.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/cs7643/._solver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/cs7643/._submit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/cs7643/._utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/cs7643/._visiondataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/data/.___init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/data/._data_processing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/modules/.___init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/modules/._conv_classifier.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/modules/._convolution.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/modules/._linear.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/modules/._max_pool.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/modules/._relu.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/modules/._softmax_ce.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/optimizer/.___init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/optimizer/.__base_optimizer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/optimizer/._sgd.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/tests/.___init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/tests/._gradient_check.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/tests/._sgd_weights" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/tests/._test_conv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/tests/._test_linear.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/tests/._test_maxpool.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/tests/._test_relu.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/tests/._test_sgd.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/tests/._utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/tests/sgd_weights/._b.npy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part1-convnet/tests/sgd_weights/._w.npy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/._.DS_Store" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/._.ipynb_checkpoints" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/._CS7643-Assignment2-2.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/._checkpoints" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/._configs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/._cs7643" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/._data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/._losses" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/._models" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/._solver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/._tests" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/.ipynb_checkpoints/._CS7643-Assignment2-2-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/checkpoints/._deleteme" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/configs/._config_mymodel.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/configs/._config_resnet32.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/configs/._config_twolayer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/configs/._config_vanilla_cnn.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/cs7643/.___init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/cs7643/._cifar10.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/cs7643/._env_prob.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/cs7643/._mnist.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/cs7643/._submit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/cs7643/._utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/cs7643/._visiondataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/data/.___init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/data/._data_processing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/losses/.___init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/losses/._focal_loss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/models/.___init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/models/._cnn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/models/._my_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/models/._resnet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/models/._twolayer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/tests/.___init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/tests/._test_focalloss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/tests/._test_mymodel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/tests/._test_twolayer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__MACOSX/part2-pytorch/tests/._test_vanilla_cnn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/environment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/.ipynb_checkpoints/CS7643-Assignment2-1-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/CS7643-Assignment2-1.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/cs7643/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/cs7643/cifar10.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/cs7643/env_prob.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/cs7643/mnist.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/cs7643/solver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/cs7643/submit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/cs7643/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/cs7643/visiondataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/data/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/data/data_processing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/modules/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/modules/conv_classifier.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/modules/convolution.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/modules/linear.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/modules/max_pool.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/modules/relu.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/modules/softmax_ce.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/optimizer/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/optimizer/_base_optimizer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/optimizer/sgd.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/tests/gradient_check.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/tests/sgd_weights/b.npy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/tests/sgd_weights/w.npy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/tests/test_conv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/tests/test_linear.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/tests/test_maxpool.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/tests/test_relu.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/tests/test_sgd.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/tests/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/.ipynb_checkpoints/CS7643-Assignment2-2-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/CS7643-Assignment2-2.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/checkpoints/deleteme" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/configs/config_mymodel.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/configs/config_resnet32.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/configs/config_twolayer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/configs/config_vanilla_cnn.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/cs7643/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/cs7643/cifar10.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/cs7643/env_prob.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/cs7643/mnist.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/cs7643/submit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/cs7643/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/cs7643/visiondataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/data/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/data/data_processing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/losses/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/losses/focal_loss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/models/cnn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/models/my_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/models/resnet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/models/twolayer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/solver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/tests/test_focalloss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/tests/test_mymodel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/tests/test_twolayer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part2-pytorch/tests/test_vanilla_cnn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report-template-a2.pptx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="32RB78ULvPBtg8oCrD8p7WYsQIS" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-ce6832f46686-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.178" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="850f49c9-5921-4fdd-b7ad-818a21ea975b" name="Changes" comment="" />
+      <created>1757373334354</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1757373334354</updated>
+    </task>
+    <servers />
+  </component>
+</project>
