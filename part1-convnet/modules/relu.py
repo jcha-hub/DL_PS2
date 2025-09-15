@@ -45,7 +45,7 @@ class ReLU:
         :param x: input data
         :return: output of the ReLU function
         '''
-        out = None
+        out = np.maximum(0, x)
         #############################################################################
         # TODO: Implement the ReLU forward pass.                                    #
         #############################################################################
@@ -62,6 +62,9 @@ class ReLU:
         :return:
         """
         dx, x = None, self.cache
+
+        dout_dx = np.greater(x, 0).astype(int)
+        dx = dout_dx * dout  #unsure on order
         #############################################################################
         # TODO: Implement the ReLU backward pass.                                   #
         #############################################################################

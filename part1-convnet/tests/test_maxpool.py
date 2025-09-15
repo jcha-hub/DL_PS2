@@ -64,6 +64,10 @@ class TestConv(unittest.TestCase):
         dout = np.random.randn(3, 2, 4, 4)
 
         dx_num = eval_numerical_gradient_array(lambda x: self._pool_forward(x), x, dout)
+
+        #add code here
+        print("dx_num: ", dx_num[0,0,:2,:2])
+
         pool = MaxPooling(kernel_size=2, stride=2)
         out = pool.forward(x)
         pool.backward(dout)

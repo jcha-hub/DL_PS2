@@ -21,6 +21,7 @@ prohibited and subject to being investigated as a GT honor code violation.
 """
 
 import numpy as np
+import math
 
 def hello_do_you_copy():
     """
@@ -46,7 +47,23 @@ class MaxPooling:
         :param x: input, (N, C, H, W)
         :return: The output by max pooling with kernel_size and stride
         """
-        out = None
+        N = x.shape[0]
+        C = x.shape[1]
+        H = x.shape[2]
+        W = x.shape[3]
+        H_out = math.floor((H - self.kernel_size)/self.stride + 1)
+        W_out = math.floor((W - self.kernel_size)/self.stride + 1)
+
+        #initialize output
+        out = np.zeros((N, C, H_out, W_out))
+
+        for n in range(N):
+            for c in range(C):
+                for hi in range(H_out):
+                    for wi in range(W_out):
+                            out[n, c, hi, wi] = np.max(x[n, c, hi*self.stride:(hi*self.stride + self.kernel_size), wi*self.stride:(wi*self.stride + self.kernel_size)])
+
+
         #############################################################################
         # TODO: Implement the max pooling forward pass.                             #
         # Hint:                                                                     #
@@ -60,12 +77,48 @@ class MaxPooling:
         return out
 
     def backward(self, dout):
-        """
+        """x
         Backward pass of max pooling
         :param dout: Upstream derivatives
         :return: nothing, but self.dx should be updated
         """
         x, H_out, W_out = self.cache
+
+        #dL_dx = 1 only for index positions in input array x in which value was the max value in pooling operation
+        out = self.forward(x)
+        dx = np.zeros_like(x)
+        # print('x shape:', x.shape)
+        # print('out shape: ', out.shape)
+        # print('dout shape: ', dout.shape)
+
+        N = x.shape[0]
+        C = x.shape[1]
+        H = x.shape[2]
+        W = x.shape[3]
+
+        for n in range(N):
+            for c in range(C):
+                for hi in range(H_out):
+                    for wi in range(W_out):
+                            #gets 2D slice from 4D tensor input
+                            slice = x[n, c, hi*self.stride:(hi*self.stride + self.kernel_size), wi*self.stride:(wi*self.stride + self.kernel_size)]
+                            # for each slice, get the row, col index of the max element and set it to one to create the local gradient dL/dout
+                            max_pos = np.argmax(slice)
+                            max_pos = np.unravel_index(max_pos, slice.shape)
+
+                            slice_max_r_idx = max_pos[0] + hi*self.stride   #height position
+                            slice_max_c_idx  = max_pos[1]  + wi*self.stride    #width position
+                            max_idx = (n, c, slice_max_r_idx, slice_max_c_idx)
+
+                            #troubleshooting
+                            # print("max idx ", max_idx)
+
+                            #multiply local gradient by output gradient to get dx
+                            dx[max_idx] = 1 * dout[n, c, hi, wi]           # can only use tuple to take slice, not list
+        #get dx
+        self.dx = dx
+        # print("dx: ", self.dx)
+
         #############################################################################
         # TODO: Implement the max pooling backward pass.                            #
         # Hint:                                                                     #
