@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5d4165c-5da4-459e-aefb-6af6dc44c4a2" name="Changes" comment="initial">
-      <change afterPath="$PROJECT_DIR$/part1-convnet/PS2_practice_v1.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/part1-convnet/A2 OH notes.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part1-convnet/CS7643-Assignment2-1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/part1-convnet/CS7643-Assignment2-1.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part1-convnet/modules/max_pool.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1-convnet/modules/max_pool.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part1-convnet/modules/relu.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1-convnet/modules/relu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part1-convnet/tests/test_maxpool.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1-convnet/tests/test_maxpool.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
