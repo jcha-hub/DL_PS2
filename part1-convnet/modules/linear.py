@@ -63,7 +63,10 @@ class Linear:
         # TODO: Implement the forward pass.                                         #
         #    HINT: You may want to flatten the input first                          #
         #############################################################################
-
+        #flatten input into shape X (N, d1*d2*....*dn), W (d1*d2*....*dn, outputsize  where N = input_number
+        #y = XW + b where y(N, output_size)
+        x = np.reshape(x, (x.shape[0], np.prod(np.array(x.shape[1:]))))
+        out = np.dot(x, self.weight) + self.bias
         #############################################################################
         #                              END OF YOUR CODE                             #
         #############################################################################
@@ -80,7 +83,9 @@ class Linear:
         #############################################################################
         # TODO: Implement the linear backward pass.                                 #
         #############################################################################
-
+        self.db = np.ones((self.out_dim, 1))
+        self.dw = x.T
+        self.dx = self.weight
         #############################################################################
         #                              END OF YOUR CODE                             #
         #############################################################################
