@@ -80,12 +80,43 @@ class Linear:
         :return: nothing but dx, dw, and db of self should be updated
         """
         x = self.cache
+
         #############################################################################
         # TODO: Implement the linear backward pass.                                 #
         #############################################################################
-        self.db = np.ones((self.out_dim, 1))
-        self.dw = x.T
-        self.dx = self.weight
+        w = self.weight
+        b = self.bias
+
+        out = np.dot(x, w) + b
+
+        # #input shapes
+        # print('x', x.shape)         #x(10, 6)
+        # print('w', w.shape)         #w(6, 5)
+        # print('b', b.shape)         #b(5, )
+        # print('out', out.shape)     #out(10, 5)
+
+        dout_dw = x.T
+        dout_dx = w.T
+
+        dw = np.dot(dout_dw, dout)              # must be (6,5) -> (6,10) (10,5)
+        dx = np.dot(dout, w.T)                  # must be (10,6) -> (10,5)  (6,5)
+        dx = dx.reshape(10,2,3)
+
+        db = np.sum(dout, axis=0, keepdims=True)  #must be (5,1)  -> (10,5).T (10,1)
+
+        # #gradient shapes
+        # print('dout', dout.shape)               # dout(10, 5)
+        #
+        # print('dout_dw', dout_dw.shape)         #dw(6, 10)
+        # print('dout_dx', dout_dx.shape)         #dx(6, 5)
+        # print('dw', dw.shape)                   ##w(6, 5)
+        # print('dx', dx.shape)                   #x(10, 6) -> reshape to shape of x
+        # print('db', db.shape)                   #(1,5)
+
+        self.dw = dw
+        self.db = db
+        self.dx = dx
+
         #############################################################################
         #                              END OF YOUR CODE                             #
         #############################################################################
