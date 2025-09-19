@@ -44,11 +44,7 @@ class SGD(_BaseOptimizer):
         self.apply_regularization(model)
 
         for idx, m in enumerate(model.modules):
-            if hasattr(m, 'weight'):
-                #############################################################################
-                # TODO:                                                                     #
-                #    1) Momentum updates for weights                                        #
-                #############################################################################
+            if hasattr(m, 'weight'):        #update momentum for weights
                 #have values m.weight, m.bias, self.learning_rate, self.momentum, m.dw, d.db
                 #cache v_weight_prev, v_bias_prev for v_weight, v_bias
 
@@ -56,41 +52,18 @@ class SGD(_BaseOptimizer):
                     v_w_prev = self.cache.get(m, {}).get('v_w', 0)
                     v_w = self.momentum * v_w_prev - self.learning_rate * m.dw
                     m.weight = m.weight + v_w
-
-                    self.cache[m] = {'v_w': v_w,
-                                     'v_b':self.cache.get(m, {}).get('v_b', 0)
-                                    }
-
-                #############################################################################
-                #                              END OF YOUR CODE                             #
-                #############################################################################
-            if hasattr(m, 'bias'):
-                #############################################################################
-                # TODO:                                                                     #
-                #    1) Momentum updates for bias                                           #
-                #############################################################################
-                #update both weight and bias using momentum
-                v_w_prev = self.cache.get(m, {}).get('v_w', 0)
-                v_b_prev = self.cache.get(m, {}).get('v_b', 0)
-
-                if m.dw is not None:
-                    v_w = self.momentum * v_w_prev - self.learning_rate * m.dw
-                    m.weight = m.weight + v_w
                 else:
-                    v_w = None
+                    v_w = 0
+
+            if hasattr(m, 'bias'):          #update momentum for bias
+                v_b_prev = self.cache.get(m, {}).get('v_b', 0)
 
                 if m.db is not None:
                     v_b = self.momentum * v_b_prev - self.learning_rate * m.db
                     m.bias = m.bias + v_b
                 else:
-                    v_b = None
+                    v_b = 0
 
-                #store values in cache
-                self.cache[m] = {'v_w': v_w,
-                                 'v_b': v_b}
+        #store values in cache
+        self.cache[m] = {'v_w': v_w, 'v_b': v_b}
 
-
-
-                #############################################################################
-                #                              END OF YOUR CODE                             #
-                #############################################################################

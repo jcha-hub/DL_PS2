@@ -65,12 +65,15 @@ class Linear:
         #############################################################################
         #flatten input into shape X (N, d1*d2*....*dn), W (d1*d2*....*dn, outputsize  where N = input_number
         #y = XW + b where y(N, output_size)
-        x = np.reshape(x, (x.shape[0], np.prod(np.array(x.shape[1:]))))
-        out = np.dot(x, self.weight) + self.bias
+
+        x_flatten = x.reshape(x.shape[0], -1)
+        out = np.dot(x_flatten, self.weight) + self.bias
         #############################################################################
         #                              END OF YOUR CODE                             #
         #############################################################################
-        self.cache = x
+
+        #cache both original x after after flattening
+        self.cache = (x, x_flatten)
         return out
 
     def backward(self, dout):
@@ -79,7 +82,9 @@ class Linear:
         :param dout: Upstream gradients, (N, self.out_dim)
         :return: nothing but dx, dw, and db of self should be updated
         """
-        x = self.cache
+        x = self.cache[0]
+        x_flatten = self.cache[1]  # x reshaped
+        #orig x
 
         #############################################################################
         # TODO: Implement the linear backward pass.                                 #
@@ -87,7 +92,7 @@ class Linear:
         w = self.weight
         b = self.bias
 
-        out = np.dot(x, w) + b
+        out = np.dot(x_flatten, w) + b
 
         # #input shapes
         # print('x', x.shape)         #x(10, 6)
@@ -95,14 +100,14 @@ class Linear:
         # print('b', b.shape)         #b(5, )
         # print('out', out.shape)     #out(10, 5)
 
-        dout_dw = x.T
+        dout_dw = x_flatten.T
         dout_dx = w.T
 
-        dw = np.dot(dout_dw, dout)              # must be (6,5) -> (6,10) (10,5)
-        dx = np.dot(dout, w.T)                  # must be (10,6) -> (10,5)  (6,5)
-        dx = dx.reshape(10,2,3)
+        dw = np.dot(dout_dw, dout)                          # must be (6,5) -> (6,10) (10,5)
+        dx = np.dot(dout, w.T).reshape(x.shape)       # must be (10,6) -> (10,5)  (6,5)
+        #reshape dx to shape of original x
 
-        db = np.sum(dout, axis=0, keepdims=True)  #must be (5,1)  -> (10,5).T (10,1)
+        db = np.sum(dout, axis=0)  #must be (5,1)  -> (10,5).T (10,1)
 
         # #gradient shapes
         # print('dout', dout.shape)               # dout(10, 5)

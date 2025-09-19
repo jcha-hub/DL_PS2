@@ -102,14 +102,14 @@ class ConvNet:
             out = m.forward(out_prev)
             out_prev = out
 
-        #calculate probabilities and cross entropy loss, final output of model is out
+        #calculate probabilities and cross entropy loss, final output of model is out (not x!) for chaining
         probs = softmax(out)
 
         softmaxCE = SoftmaxCrossEntropy()
-        loss = softmaxCE.forward(x, y)
+        loss = softmaxCE.forward(out, y)
 
-        #store x, y for use with backprop
-        self.cache = (x,y)
+        #cache
+        self.cache = softmaxCE
 
         #############################################################################
         #                              END OF YOUR CODE                             #
@@ -125,17 +125,13 @@ class ConvNet:
         # TODO:                                                                     #
         #    1) Implement backward pass of the model                                #
         #############################################################################
-        #get model input, output
-        x, y = self.cache
+        softmaxCE = self.cache
 
         #get dout to start backprop
-        softmaxCE = SoftmaxCrossEntropy()
-        loss = softmaxCE.forward(x, y)
+        softmaxCE.backward()
+        dout = softmaxCE.dx
 
-        #initialize dout with final model output, then during iterations becomes the upstream gradient of module in loop
-        dout = softmaxCE.backward()
-
-        for m in self.modules:
+        for m in reversed(self.modules):        #reverse order for backprop
             m.backward(dout)
             dout = m.dx
 

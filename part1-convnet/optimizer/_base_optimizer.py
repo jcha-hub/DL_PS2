@@ -45,9 +45,7 @@ class _BaseOptimizer:
 
       for m in model.modules:
           if hasattr(m, 'weight'):
-              # add code here
-              if m.dw is None:
-                  m.dw = self.reg + m.weight
-              else:
-                  m.dw += self.reg * m.weight
+              print("Layer:", m)
+              print("dw.shape:", m.dw.shape, "weight.shape:", m.weight.shape)
+              m.dw += self.reg * m.weight
 
