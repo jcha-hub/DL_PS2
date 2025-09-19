@@ -25,6 +25,7 @@ from .relu import ReLU
 from .max_pool import MaxPooling
 from .convolution import Conv2D
 from .linear import Linear
+import numpy as np
 
 def hello_do_you_copy():
     """
@@ -39,6 +40,9 @@ class ConvNet:
     """
     def __init__(self, modules, criterion):
         self.modules = []
+        self.cache = None
+
+
         for m in modules:
             if m['type'] == 'Conv2D':
                 self.modules.append(
@@ -82,6 +86,30 @@ class ConvNet:
         # TODO:                                                                     #
         #    1) Implement forward pass of the model                                 #
         #############################################################################
+        #add missing function for softmax
+        def softmax(scores):
+            """
+            Compute softmax scores given the raw output from the model
+            :param scores: raw scores from the model (N, num_classes)
+            :return: prob: softmax probabilities (N, num_classes)
+            """
+            scores = scores - np.max(scores, axis=1, keepdims=True)
+            prob = np.exp(scores) / np.sum(np.exp(scores), axis=1, keepdims=True)  # sum by row, keepdims for shape
+            return prob
+
+        out_prev = x      #initialize , at first iteration use input x
+        for m in self.modules:
+            out = m.forward(out_prev)
+            out_prev = out
+
+        #calculate probabilities and cross entropy loss, final output of model is out
+        probs = softmax(out)
+
+        softmaxCE = SoftmaxCrossEntropy()
+        loss = softmaxCE.forward(x, y)
+
+        #store x, y for use with backprop
+        self.cache = (x,y)
 
         #############################################################################
         #                              END OF YOUR CODE                             #
@@ -97,6 +125,19 @@ class ConvNet:
         # TODO:                                                                     #
         #    1) Implement backward pass of the model                                #
         #############################################################################
+        #get model input, output
+        x, y = self.cache
+
+        #get dout to start backprop
+        softmaxCE = SoftmaxCrossEntropy()
+        loss = softmaxCE.forward(x, y)
+
+        #initialize dout with final model output, then during iterations becomes the upstream gradient of module in loop
+        dout = softmaxCE.backward()
+
+        for m in self.modules:
+            m.backward(dout)
+            dout = m.dx
 
         #############################################################################
         #                              END OF YOUR CODE                             #

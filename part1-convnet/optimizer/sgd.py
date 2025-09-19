@@ -33,6 +33,7 @@ class SGD(_BaseOptimizer):
     def __init__(self, model, learning_rate=1e-4, reg=1e-3, momentum=0.9):
         super().__init__(model, learning_rate, reg)
         self.momentum = momentum
+        self.cache = {} # dict to store v_weight_prev, v_bias_prev for each model
 
     def update(self, model):
         """
@@ -48,7 +49,18 @@ class SGD(_BaseOptimizer):
                 # TODO:                                                                     #
                 #    1) Momentum updates for weights                                        #
                 #############################################################################
-                pass
+                #have values m.weight, m.bias, self.learning_rate, self.momentum, m.dw, d.db
+                #cache v_weight_prev, v_bias_prev for v_weight, v_bias
+
+                if m.dw is not None:
+                    v_w_prev = self.cache.get(m, {}).get('v_w', 0)
+                    v_w = self.momentum * v_w_prev - self.learning_rate * m.dw
+                    m.weight = m.weight + v_w
+
+                    self.cache[m] = {'v_w': v_w,
+                                     'v_b':self.cache.get(m, {}).get('v_b', 0)
+                                    }
+
                 #############################################################################
                 #                              END OF YOUR CODE                             #
                 #############################################################################
@@ -57,7 +69,28 @@ class SGD(_BaseOptimizer):
                 # TODO:                                                                     #
                 #    1) Momentum updates for bias                                           #
                 #############################################################################
-                pass
+                #update both weight and bias using momentum
+                v_w_prev = self.cache.get(m, {}).get('v_w', 0)
+                v_b_prev = self.cache.get(m, {}).get('v_b', 0)
+
+                if m.dw is not None:
+                    v_w = self.momentum * v_w_prev - self.learning_rate * m.dw
+                    m.weight = m.weight + v_w
+                else:
+                    v_w = None
+
+                if m.db is not None:
+                    v_b = self.momentum * v_b_prev - self.learning_rate * m.db
+                    m.bias = m.bias + v_b
+                else:
+                    v_b = None
+
+                #store values in cache
+                self.cache[m] = {'v_w': v_w,
+                                 'v_b': v_b}
+
+
+
                 #############################################################################
                 #                              END OF YOUR CODE                             #
                 #############################################################################
