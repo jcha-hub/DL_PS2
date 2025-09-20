@@ -56,6 +56,7 @@ class TestSGD(unittest.TestCase):
         np.random.seed(512)
         y = np.random.randint(10, size=32)
         tmp = model.forward(x, y)
+
         model.backward()
         optimizer.update(model)
 
