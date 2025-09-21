@@ -203,7 +203,7 @@ class Conv2D:
             #convert from dx_pad to dx - trim away padding
             dx[n,:,:,:] = dx_pad_n[:, p:-p, p:-p]
 
-        print("dx", dx.shape)
+        # print("dx", dx.shape)
 
         self.dx = dx
         self.dw = dw

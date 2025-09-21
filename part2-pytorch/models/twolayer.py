@@ -22,6 +22,7 @@ prohibited and subject to being investigated as a GT honor code violation.
 
 import torch
 import torch.nn as nn
+import numpy as np
 
 
 def hello_do_you_copy():
@@ -40,21 +41,17 @@ class TwoLayerNet(nn.Module):
         :param num_classes: total number of classes
         """
         super().__init__()
-        #############################################################################
-        # TODO: Initialize the TwoLayerNet, use sigmoid activation between layers   #
-        #############################################################################
+        #nn.Linear (in_feature = num_channels * image H * image W, out_features=)
 
-        #############################################################################
-        #                              END OF YOUR CODE                             #
-        #############################################################################
+        self.flatten = nn.Flatten()     #flattens to (N, num_channels * image H x image W)
+        self.linear_sigmoid_stack = nn.Sequential(
+            nn.Linear(np.prod(input_dim), hidden_size),
+            nn.Sigmoid(),
+            nn.Linear(hidden_size, num_classes)
+        )
 
     def forward(self, x):
-        out = None
-        #############################################################################
-        # TODO: Implement forward pass of the network                               #
-        #############################################################################
+        x = self.flatten(x)
+        out = self.linear_sigmoid_stack(x)
 
-        #############################################################################
-        #                              END OF YOUR CODE                             #
-        #############################################################################
         return out

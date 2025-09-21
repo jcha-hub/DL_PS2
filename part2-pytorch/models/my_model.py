@@ -22,6 +22,7 @@ prohibited and subject to being investigated as a GT honor code violation.
 
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 
 def hello_do_you_copy():
@@ -35,21 +36,29 @@ def hello_do_you_copy():
 class MyModel(nn.Module):
     def __init__(self):
         super().__init__()
-        #############################################################################
-        # TODO: Initialize the network weights                                      #
-        #############################################################################
-
-        #############################################################################
-        #                              END OF YOUR CODE                             #
-        #############################################################################
+        #nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding)
+        self.conv1 = nn.Conv2d(3,32,6, 2, 2)
+        self.pool = nn.MaxPool2d(2,2)
+        self.conv2 = nn.Conv2d(32, 64, 4, 1, 0)
+        self.fc1 = nn.Linear(in_features = 256, out_features = 120)
+        self.fc2 = nn.Linear(120, 60)
+        self.fc3 = nn.Linear(60,10)
 
     def forward(self, x):
-        outs = None
-        #############################################################################
-        # TODO: Implement forward pass of the network                               #
-        #############################################################################
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
 
-        #############################################################################
-        #                              END OF YOUR CODE                             #
-        #############################################################################
+        # # fc_in_features = x.numel() // x.shape[0] - comment out fc to get input into fc
+        # print('hello-----------------------')
+        # fc_in_features = x.numel() // x.shape[0]
+        # print('fc_in_features', fc_in_features)       #256
+
+        x = torch.flatten(x, 1)
+        x = F.relu(self.fc1(x))
+        x = F.dropout(x, 0.2)   #reduce overfitting
+
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+
+        outs = x
         return outs
