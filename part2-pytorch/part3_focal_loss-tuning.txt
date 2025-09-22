@@ -1,0 +1,154 @@
+PS1-neural networks
+
+https://wikidocs.net/235711
+
+
+
+PS2 - convolutional neural networks
+https://deeplearning.cs.cmu.edu/F21/document/recitation/Recitation5/CNN_Backprop_Recitation_5_F21.pdf
+https://github.com/alisaaalehi/convolution_as_multiplication
+https://www.baeldung.com/cs/convolution-matrix-multiplication
+
+github of Andrew Ng coursera
+https://github.com/amanchadha/coursera-deep-learning-specialization/tree/master
+
+google notebook for part 1 has error no module called imp
+Looks like google updated python 3.12 and things broke. But no worries - go to Edit > Notebook 
+Settings and then under "Runtime version" select "2025.07" (and in the meantime check that your 
+hardware accelerator is using a GPU)
+
+#model architectures for my_model
+https://www.geeksforgeeks.org/machine-learning/convolutional-neural-network-cnn-architectures/
+
+#if you save pth file on gpu then try to upload model weights on cpu, it has an error, make generalizable like this
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model = MyModel()
+state_dict = torch.load("model.pth", map_location=device)
+model.load_state_dict(state_dict)
+model.to(device)
+model.eval()
+
+#part 3 - focal loss
+refer to two papers
+https://medium.com/nerd-for-tech/review-cb-loss-class-balanced-loss-based-on-effective-number-of-samples-image-classification-3056a1a1a001
+
+torch function to do log softmax, its faster torch.nn.functional.log_softmax
+https://docs.pytorch.org/docs/stable/generated/torch.nn.functional.log_softmax.html
+
+resnet 32 settings tried
+
+1: Default YAML with REGULAR CIFAR Resnet32– batch 128, lr = 0.0001, reg = 0.0005, epochs=10: : LOSS 1.6437  CE---------
+
+Best Prec @1 Acccuracy: 0.3438 
+Accuracy of Class 0: 0.4450 
+Accuracy of Class 1: 0.3520 
+Accuracy of Class 2: 0.1750 
+Accuracy of Class 3: 0.1560 
+Accuracy of Class 4: 0.4230 
+Accuracy of Class 5: 0.3870 
+Accuracy of Class 6: 0.4090 
+Accuracy of Class 7: 0.2500 
+Accuracy of Class 8: 0.4730 
+Accuracy of Class 9: 0.3680
+
+2: Imbalance CIFAR  with default settings batch 128, lr 0.0001, reg= 0.0005, epochs=10, LOSS = 1.4253 CE-----------
+Prec @1: 0.1667 Best Prec @1 Acccuracy: 0.1678 
+Accuracy of Class 0: 0.8330 
+Accuracy of Class 1: 0.3510 
+Accuracy of Class 2: 0.4540 
+Accuracy of Class 3: 0.0310 
+Accuracy of Class 4: 0.0090 
+Accuracy of Class 5: 0.0000 
+Accuracy of Class 6: 0.0000 
+Accuracy of Class 7: 0.0000 
+Accuracy of Class 8: 0.0000 
+Accuracy of Class 9: 0.0000
+
+3: Imbalance CIFAR – batch 128, lr 0.001, reg= 0.001, epochs=10 LOSS 1.3032 CE ---------------
+ 
+Prec @1: 0.2587 Best Prec @1 Acccuracy: 0.2592 
+Accuracy of Class 0: 0.8620 
+Accuracy of Class 1: 0.7490 
+Accuracy of Class 2: 0.6350 
+Accuracy of Class 3: 0.3360 
+Accuracy of Class 4: 0.0090 
+Accuracy of Class 5: 0.0000 
+Accuracy of Class 6: 0.0010 
+Accuracy of Class 7: 0.0000 
+Accuracy of Class 8: 0.0000 
+Accuracy of Class 9: 0.0000
+
+
+4: Imbalance CIFAR – batch 128, lr 0.01, reg= 0.001, epochs=15 CE LOSS Loss 0.9552 (0.7630) CE---------------
+* Prec @1: 0.3323
+Best Prec @1 Acccuracy: 0.3329
+Accuracy of Class 0: 0.8960
+Accuracy of Class 1: 0.9060
+Accuracy of Class 2: 0.5620
+Accuracy of Class 3: 0.5490
+Accuracy of Class 4: 0.2700
+Accuracy of Class 5: 0.0660
+Accuracy of Class 6: 0.0730
+Accuracy of Class 7: 0.0070
+Accuracy of Class 8: 0.0000
+Accuracy of Class 9: 0.0000
+
+
+NOW start using focal loss!!!
+5: Imbalance CIFAR –FOCAL  Loss 0.2159 (0.1983)	Prec @1 0.4688 (0.4816)	------------------
+Train:
+  batch_size: 128
+  learning_rate: 0.01
+  reg: 0.001
+  epochs: 15
+  steps: [6, 8]
+  warmup: 0
+  momentum: 0.9
+  gamma: 1
+
+network:
+  model: ResNet-32 # TwoLayerNet or VanillaCNN or MyModel or ResNet-32
+  save_best: True
+
+data:
+  imbalance: imbalance # regular or imbalance
+  beta: 0.9999
+
+loss:
+  loss_type: Focal # CE or Focal
+
+Best Prec @1 Acccuracy: 0.4324
+Accuracy of Class 0: 0.6560
+Accuracy of Class 1: 0.5080
+Accuracy of Class 2: 0.3010
+Accuracy of Class 3: 0.2800
+Accuracy of Class 4: 0.3730
+Accuracy of Class 5: 0.4320
+Accuracy of Class 6: 0.4410
+Accuracy of Class 7: 0.4620
+Accuracy of Class 8: 0.3980
+Accuracy of Class 9: 0.4730
+
+
+6. Imbalance CIFAR-FOCAL 
+
+
+  batch_size: 128
+  learning_rate: 0.01
+  reg: 0.001
+  epochs: 15
+  steps: [6, 8]
+  warmup: 0
+  momentum: 0.9
+  gamma: 2
+
+network:
+  model: ResNet-32 # TwoLayerNet or VanillaCNN or MyModel or ResNet-32
+  save_best: True
+
+data:
+  imbalance: imbalance # regular or imbalance
+  beta: 0.99
+
+loss:
+  loss_type: Focal # CE or Focal
