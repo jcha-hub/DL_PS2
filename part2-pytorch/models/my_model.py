@@ -37,25 +37,31 @@ class MyModel(nn.Module):
     def __init__(self):
         super().__init__()
         #nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding)
-        self.conv1 = nn.Conv2d(3,32,6, 2, 2)
-        self.pool = nn.MaxPool2d(2,2)
-        self.conv2 = nn.Conv2d(32, 64, 4, 1, 0)
-        self.fc1 = nn.Linear(in_features = 256, out_features = 120)
-        self.fc2 = nn.Linear(120, 60)
-        self.fc3 = nn.Linear(60,10)
+        self.conv1 = nn.Conv2d(3,96,10, 2, padding=2)
+        self.conv2 = nn.Conv2d(96, 96, 10, 1, padding='same')
+        self.conv3 = nn.Conv2d(96, 96, 10, 1, padding='same')
+        self.conv4 = nn.Conv2d(96,96,5, 1, padding='same')
+        self.conv5 = nn.Conv2d(96, 128, 3, 1, padding='same')
+        self.pool = nn.MaxPool2d(2, 2)
+        self.fc1 = nn.Linear(in_features = 1152, out_features = 300)
+        self.fc2 = nn.Linear(300, 80)
+        self.fc3 = nn.Linear(80,10)
 
     def forward(self, x):
-        x = self.pool(F.relu(self.conv1(x)))
+        x = F.relu(self.conv1(x))
         x = self.pool(F.relu(self.conv2(x)))
+        x = F.relu(self.conv3(x))
+        x = F.relu(self.conv4(x))
+        x = self.pool(F.relu(self.conv5(x)))
 
-        # # fc_in_features = x.numel() // x.shape[0] - comment out fc to get input into fc
+        # # # fc_in_features = x.numel() // x.shape[0] - comment out fc to get input into fc
         # print('hello-----------------------')
         # fc_in_features = x.numel() // x.shape[0]
-        # print('fc_in_features', fc_in_features)       #256
+        # print('fc_in_features', fc_in_features)       #1152
 
         x = torch.flatten(x, 1)
         x = F.relu(self.fc1(x))
-        x = F.dropout(x, 0.2)   #reduce overfitting
+        x = F.dropout(x, 0.25)   #reduce overfitting
 
         x = F.relu(self.fc2(x))
         x = self.fc3(x)

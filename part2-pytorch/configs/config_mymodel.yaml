@@ -1,11 +1,11 @@
 Train:
-  batch_size: 128
+  batch_size: 96
   learning_rate: 0.01
-  reg: 0.0005
-  epochs: 10
+  reg: 0.001
+  epochs: 15
   steps: [6, 8]
   warmup: 0
-  momentum: 0.9
+  momentum: 0.95
   gamma: 1
 
 network:
