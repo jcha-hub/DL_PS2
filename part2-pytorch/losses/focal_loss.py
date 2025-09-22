@@ -44,9 +44,12 @@ def reweight(cls_num_list, beta=0.9999):
     # TODO: reweight each class by effective numbers                            #
     #############################################################################
     per_cls_weights = None
-    #############################################################################
-    #                              END OF YOUR CODE                             #
-    #############################################################################
+    #per paper, E_n = effective number of examples, reweight by 1/E_n
+    tensor_cls_num_list = torch.tensor(cls_num_list, dtype=torch.float32)
+    per_cls_weights = (1-beta)/(1-beta **tensor_cls_num_list)
+
+    #normalize - output div by samples in batch and mult by number of classes, to keep weights close to normal CE
+    per_cls_weights = per_cls_weights/per_cls_weights.sum() * len(cls_num_list)
     return per_cls_weights
 
 
@@ -68,8 +71,32 @@ class FocalLoss(nn.Module):
         #############################################################################
         # TODO: Implement forward pass of the focal loss                            #
         #############################################################################
+        #want softmax class balanced focal loss
 
-        #############################################################################
-        #                              END OF YOUR CODE                             #
-        #############################################################################
+        #1 - need to calc pt- for each sample its model's estimated prob for the true class for that sample, label
+        #p is shape (N, C) were C is 1...C are number of classes)
+        # targets - labels (C,)      use F.logSoftmax not F.softmax for more accuracy since F.cross_entropy uses logSoftmax for its calcs
+        log_p = F.log_softmax(input, dim=1)
+        N = target.shape[0]      #batch size
+        log_pt = log_p[torch.arange(N), target]
+        pt = log_p.exp()[torch.arange(N), target]
+
+        #2 - get sample weights for each sample in batch
+        sample_weights = self.weight[target]
+
+        # print('printouts------------------------')
+        # print('input: ', input.shape)
+        # print('target: ', target.shape)
+        # print('pt: ', pt.shape)
+        # print("sample_weights: ", sample_weights.shape)
+
+
+        loss = - sample_weights * (1-pt)**self.gamma * log_pt    # by default averaging over samples, reduction=mean()
+        loss = loss.mean()       #test compares to F.cross_entropy, which averages with mean() by default. So output also needs to be a scalar
+        # print("loss: ", loss.shape)
+
+        ce_loss = F.cross_entropy(input, target, weight=self.weight.float())        #does class balance CE but not class balance focal loss like our custom one
+        # print("ce_loss: ", ce_loss.shape)
+        # print('ce_loss value: ', ce_loss )
+
         return loss
