@@ -54,7 +54,7 @@ class MyModel(nn.Module):
         x = self.pool(F.relu(self.conv3(x)))
         x = F.relu(self.conv4(x))
         x = F.relu(self.conv5(x))
-        x = F.dropout(x, 0.15)
+        x = F.dropout(x, 0.25)
 
         # # # fc_in_features = x.numel() // x.shape[0] - comment out fc to get input into fc
         # print('hello-----------------------')
